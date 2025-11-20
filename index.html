@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Carta para Ti, Mi Amor</title>
+    <style>
+        /* ESTILOS CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec; /* Rosa claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            color: #333;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .title {
+            color: #e91e63; /* Rosa vibrante */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Parisienne', cursive;
+        }
+
+        .greeting {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #d81b60;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .love-declaration {
+            font-size: 1.8em;
+            color: #e91e63;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: #777;
+            font-size: 1.1em;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Importar fuente bonita de Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card">
+            <h1 class="title">Para mi amorcito</h1>
+            
+            <p class="greeting">Sé que no es la mejor carta y ya te daré un abrazo en persona, pero aún así quise escribírtela...</p>
+            
+            <p>De pequeño me contaron que las mejores historias de pareja eran las de amor a primera vista, esas donde todo explota en un segundo y el mundo cambia de color. Durante mucho tiempo creí que esa era la única forma de sentir algo real, pero luego llegaste tú y me enseñaste algo mucho más valioso.</p>
+            
+            <p>Me enseñaste que el verdadero amor se construye día a día. Como dice Kaleth Morales, eres mi todo, mi comienzo, mi desenlace y mi fin. Aunque a veces la vida no nos permita vernos todos los días, quiero que sepas que mi corazón está contigo en cada momento.</p>
+            
+            <p class="highlight">Quiero que tengas muy presente que a pesar de las circunstancias o adversidades que se presenten en el camino recuerda siempre que</p>
+            
+            <p class="love-declaration">TE AMO MUCHO Y TE AMARÉ POR SIEMPRE</p>
+            
+            <div class="image-container">
+                <img src="img/img.jpg" alt="Nosotros">
+            </div>
+            
+            <p class="signature">Atentamente, tu novio cansoncito de Joel</p>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.card');
+
+            // Efecto de inclinación 3D al mover el mouse
+            card.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { left, top, width, height } = card.getBoundingClientRect();
+
+                // Calcular posición del mouse relativa al centro de la tarjeta
+                const x = (clientX - (left + width / 2)) / (width / 2);
+                const y = (clientY - (top + height / 2)) / (height / 2);
+
+                // Aplicar transformación
+                card.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
+            });
+
+            // Resetear posición al salir el mouse
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
